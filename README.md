@@ -1,2 +1,4 @@
 # react-native-note-app
-A bear basic react native app with zustand for state management 
+
+A bear basic React Native app with Zustand for state management.
+
