@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, ToastAndroid } from "react-native";
 import { Input } from "../../components/input/input";
 import { Label } from "../../components/label/label";
 import { Button } from "../../components/button/button";
@@ -14,7 +14,17 @@ export interface Inote {
 const CreateNote = () => {
   const addNote = useNoteStore((state) => state.addNote);
   const notes = useNoteStore().notes;
-  console.log(notes);
+
+  const handleCreate = () => {
+    addNote(note);
+    ToastAndroid.showWithGravityAndOffset(
+      "A fucking note was created",
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
+  };
   const [selectedstate, setSelectedState] = useState("started");
   const [note, setNote] = useState<Inote>({ note: "", status: selectedstate });
   return (
@@ -48,7 +58,7 @@ const CreateNote = () => {
           title="create"
           textStyle="text-center text-lg text-white"
           containerStyles="mt-4"
-          onClickHandler={() => addNote(note)}
+          onClickHandler={handleCreate}
         />
       </View>
     </SafeAreaView>
