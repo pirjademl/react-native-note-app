@@ -12,8 +12,8 @@ import { Button } from "../components/button/button";
 
 export default function App() {
   return (
-    <SafeAreaView className="bg-primary h-full w-full px-3">
-      <View className="flex flex-col  items-center gap-2 justify-center h-full gap-3">
+    <SafeAreaView className="bg-primary h-full max-w-xl ">
+      <View className="flex flex-col  items-center gap-2 justify-center h-full gap-3 ">
         <Image source={create} resizeMode="contain" />
         <Text className="text-xl font-bold  text-white capitalize">
           create a fucking notes and shit
