@@ -7,7 +7,18 @@ import { icons } from "../../constants";
 const TabsLayout = () => {
   return (
     <>
-      <Tabs>
+      <Tabs
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: "#031D44",
+          tabBarInactiveTintColor: "#D8E1FF",
+          tabBarStyle: {
+            backgroundColor: "#1E3888",
+            borderTopWidth: 1,
+            borderTopColor: "#232533",
+          },
+        }}
+      >
         <Tabs.Screen
           name="create-note"
           options={{
