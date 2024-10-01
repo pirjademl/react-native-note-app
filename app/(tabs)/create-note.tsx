@@ -1,5 +1,12 @@
 import { FC, useState } from "react";
-import { View, Text, SafeAreaView, ToastAndroid } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ToastAndroid,
+  Alert,
+  Modal,
+} from "react-native";
 import { Input } from "../../components/input/input";
 import { Label } from "../../components/label/label";
 import { Button } from "../../components/button/button";
@@ -13,9 +20,12 @@ export interface Inote {
 }
 const CreateNote = () => {
   const addNote = useNoteStore((state) => state.addNote);
-  const notes = useNoteStore().notes;
 
   const handleCreate = () => {
+    if (!note.note) {
+      setisNoteEmpty(!isnoteEmpty);
+      return;
+    }
     addNote(note);
     ToastAndroid.showWithGravityAndOffset(
       "A fucking note was created",
@@ -27,9 +37,10 @@ const CreateNote = () => {
   };
   const [selectedstate, setSelectedState] = useState("started");
   const [note, setNote] = useState<Inote>({ note: "", status: selectedstate });
+  const [isnoteEmpty, setisNoteEmpty] = useState<boolean>(false);
   return (
-    <SafeAreaView>
-      <View className=" p-4 flex flex-col gap-3 justify-center h-full w-full ">
+    <SafeAreaView className=" p-3 flex flex-col  justify-center h-full w-full bg-[#DDD8C4] ">
+      <View className="">
         <Label title="create your note" containerStyle="m-3" labelStyle=" " />
         <Input
           inputStyle="border border-border p-2 rounded-md text-charcoal  text-base"
@@ -61,6 +72,11 @@ const CreateNote = () => {
           onClickHandler={handleCreate}
         />
       </View>
+      {isnoteEmpty && (
+        <View className="p-3">
+          <Text className="text-base text-red-600">Note text is empty!</Text>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
