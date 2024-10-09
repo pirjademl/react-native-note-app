@@ -1,35 +1,29 @@
 import { ChangeEvent, FC } from "react";
-import {
-  NativeSyntheticEvent,
-  Text,
-  TextInput,
-  TextInputChangeEventData,
-  View,
-} from "react-native";
+import { TextInput, View } from "react-native";
 interface InputProps {
-  inputStyle: string;
-  placeholderText?: string;
-  containerStyle: string;
-  value: string;
-  onInputChange: (arg0: string) => void;
+    inputStyle: string;
+    placeholderText?: string;
+    containerStyle: string;
+    value: string;
+    onInputChange: (arg0: string) => void;
 }
 
 export const Input: FC<InputProps> = ({
-  inputStyle,
-  placeholderText,
-  containerStyle,
-  onInputChange,
-  value,
+    inputStyle,
+    placeholderText,
+    containerStyle,
+    onInputChange,
+    value,
 }) => {
-  return (
-    <View className={containerStyle}>
-      <TextInput
-        className={inputStyle}
-        placeholder={placeholderText}
-        placeholderTextColor="#404E5C"
-        value={value}
-        onChangeText={onInputChange}
-      />
-    </View>
-  );
+    return (
+        <View className={containerStyle}>
+            <TextInput
+                className={inputStyle}
+                placeholder={placeholderText}
+                placeholderTextColor="#404E5C"
+                value={value}
+                onChangeText={onInputChange}
+            />
+        </View>
+    );
 };

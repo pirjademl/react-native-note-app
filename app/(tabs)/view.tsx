@@ -12,7 +12,7 @@ const ViewNote = () => {
   return (
     <SafeAreaView className="bg-[#DDD8C4] w-full h-full px-4 ">
       <FlatList
-        data={notes ?? []}
+        data={notes}
         keyExtractor={(item) => item.note}
         ListEmptyComponent={EmptyNotes}
         renderItem={({ item }) => (
@@ -29,9 +29,4 @@ const ViewNote = () => {
   );
 };
 
-const containerStyles = StyleSheet.create({
-  containerStyles: {
-    flex: 1,
-  },
-});
 export default ViewNote;
